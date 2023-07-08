@@ -7,6 +7,7 @@ class Product {
   late int stock;
   late String paymentForm;
   late String category;
+  late int quantity;
 
   Product({
     required this.id,
@@ -17,6 +18,7 @@ class Product {
     required this.stock,
     required this.paymentForm,
     required this.category,
+    required this.quantity,
   });
 
   factory Product.fromJson(Map<String, dynamic> json) {
@@ -29,6 +31,7 @@ class Product {
       stock: json['stock'],
       paymentForm: json['paymentForm'],
       category: json['category'],
+      quantity: json['quantity'],
     );
   }
 
@@ -41,6 +44,7 @@ class Product {
         'stock': stock,
         'paymentForm': paymentForm,
         'category': category,
+        'quantity': quantity,
       };
 
   static List<Product> products = [
@@ -54,6 +58,7 @@ class Product {
       stock: 10,
       paymentForm: 'Em até 12x de R\$ 2,49',
       category: 'Medicamentos',
+      quantity: 0,
     ),
     Product(
       id: 2,
@@ -65,6 +70,7 @@ class Product {
       stock: 10,
       paymentForm: 'Em até 12x de R\$ 0,49	',
       category: 'Medicamentos',
+      quantity: 0,
     ),
     Product(
       id: 3,
@@ -76,6 +82,7 @@ class Product {
       stock: 10,
       paymentForm: 'Em até 12x de R\$ 0,69	',
       category: 'Medicamentos',
+      quantity: 0,
     ),
     Product(
       id: 4,
@@ -87,6 +94,7 @@ class Product {
       stock: 10,
       paymentForm: 'Em até 12x de R\$ 0,29	',
       category: 'Medicamentos',
+      quantity: 0,
     ),
     Product(
       id: 5,
@@ -98,6 +106,7 @@ class Product {
       stock: 10,
       paymentForm: 'Em até 12x de R\$ 8,00',
       category: 'Proteses dentárias',
+      quantity: 0,
     ),
     Product(
       id: 6,
@@ -109,6 +118,7 @@ class Product {
       stock: 5,
       paymentForm: 'Em até 12x de R\$ 6,00',
       category: 'Proteses dentárias',
+      quantity: 0,
     ),
     Product(
       id: 7,
@@ -120,6 +130,7 @@ class Product {
       stock: 5,
       paymentForm: 'Em até 12x de R\$ 6,00',
       category: 'Brocas',
+      quantity: 0,
     ),
     Product(
       id: 8,
@@ -131,9 +142,35 @@ class Product {
       stock: 5,
       paymentForm: 'Em até 12x de R\$ 6,00',
       category: 'Biomateriais',
+      quantity: 0,
+    ),
+    Product(
+      id: 9,
+      name: 'Escova Dental Slim Soft Black',
+      description:
+          'Desenvolvida com a tecnologia de ponta da Colgate, suas cerdas ultra-finas funcionam em perfeita harmonia com a escova, removendo as partículas mais difíceis entre os dentes e as gengivas.Cabos com diversas cores.Azul.Verde.Rosa.Cabo emborrachado.Escova dental ideal para pacientes que precisam de uma limpeza profunda e delicada.Possui cerdas macias.Produto enviado em cores sortidas, sem a possibilidade de escolher..',
+      image: 'assets/escova_dental.jpeg',
+      price: 9.50,
+      stock: 5,
+      paymentForm: 'Em até 12x de R\$ 0,90',
+      category: 'Escovas de dentes',
+      quantity: 0,
+    ),
+    Product(
+      id: 10,
+      name: 'Antisséptico Bucal Complete',
+      description:
+          'Enxaguante bucal sem álcool, que não causa ardência e ressecamento na boca após o uso.',
+      image: 'assets/enxague.jpeg',
+      price: 41.99,
+      stock: 5,
+      paymentForm: 'Em até 12x de R\$ 4,00',
+      category: 'Enxaguantes bucais',
+      quantity: 0,
     ),
   ];
   static List<String> dentalCategories = [
+    'Escovas de dentes',
     'Anestesicos e agulhas',
     'Escovas de dentes',
     'Pastas de dentes',

@@ -1,6 +1,11 @@
-import 'package:corelab_app_challenge/pages/categories.dart';
+import 'package:corelab_app_challenge/screens/categories_screen.dart';
+import 'package:corelab_app_challenge/screens/favorite_screen.dart';
 import 'package:corelab_app_challenge/screens/home.dart';
+import 'package:corelab_app_challenge/screens/profile_screen.dart';
+import 'package:corelab_app_challenge/screens/shopping_card_screen.dart';
+import 'package:corelab_app_challenge/state/screen_state.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -13,21 +18,19 @@ class _HomePageState extends State<HomePage> {
   int indexBottom = 0;
   final _screens = [
     const Home(),
-    const CategoryPage(),
-    const Home(),
-    const CategoryPage(),
-    const Home(),
+    const CategoryScreen(),
+    const ShoppingCardScreen(),
+    const FavoriteScreen(),
+    const ProfileScreen(),
   ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _screens[indexBottom],
+      body: _screens[context.watch<ScreenState>().indexScreen],
       bottomNavigationBar: BottomNavigationBar(
           currentIndex: indexBottom,
           onTap: (index) {
-            setState(() {
-              indexBottom = index;
-            });
+            context.read<ScreenState>().setscreen(index);
           },
           selectedItemColor: const Color(0xFF00B4CC),
           unselectedItemColor: const Color(0xFF7C9094),
@@ -45,8 +48,8 @@ class _HomePageState extends State<HomePage> {
               label: 'Categorias',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.add_box_outlined),
-              label: 'Anunciar',
+              icon: Icon(Icons.shopping_cart_outlined),
+              label: 'Carrinho',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.favorite_outline),

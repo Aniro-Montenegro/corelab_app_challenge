@@ -1,9 +1,27 @@
-import 'package:corelab_app_challenge/pages/categories.dart';
 import 'package:corelab_app_challenge/pages/home.dart';
+import 'package:corelab_app_challenge/pages/products_detail.dart';
+import 'package:corelab_app_challenge/state/categorie_state.dart';
+import 'package:corelab_app_challenge/state/favorites_state.dart';
+import 'package:corelab_app_challenge/state/product_state.dart';
+import 'package:corelab_app_challenge/state/screen_state.dart';
+import 'package:corelab_app_challenge/state/shopping_cart_state.dart';
+
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => CategoryState()),
+        ChangeNotifierProvider(create: (_) => ScreenState()),
+        ChangeNotifierProvider(create: (_) => ProductState()),
+        ChangeNotifierProvider(create: (_) => ShoppingCartState()),
+        ChangeNotifierProvider(create: (_) => FavoritesState())
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -22,7 +40,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/home',
       routes: {
         '/home': (context) => const HomePage(),
-        '/categories': (context) => const CategoryPage(),
+        '/productDetail': (context) => const ProductDetail(),
       },
     );
   }

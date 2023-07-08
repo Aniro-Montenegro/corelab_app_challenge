@@ -77,10 +77,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              const CircleAvatar(
+              CircleAvatar(
                 radius: 60,
-                backgroundImage: AssetImage('assets/morgan.jpeg'),
-                child: Icon(Icons.person, size: 60),
+                backgroundImage: const AssetImage('assets/morgan.jpeg'),
+                child: Image.asset(
+                  'assets/morgan.jpeg',
+                  width: 120,
+                  height: 120,
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) {
+                    return const Icon(Icons.person, size: 60);
+                  },
+                ),
               ),
               const SizedBox(height: 16.0),
               TextFormField(
